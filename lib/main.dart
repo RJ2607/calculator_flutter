@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: ,
+    home: calculatorapp(),
   ));
 }
- 
+
 class calculatorapp extends StatefulWidget {
   const calculatorapp({super.key});
 
@@ -17,9 +17,8 @@ class _calculatorappState extends State<calculatorapp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(),
     );
-    
-    
   }
 }
