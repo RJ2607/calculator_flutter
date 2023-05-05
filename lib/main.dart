@@ -27,7 +27,13 @@ class _calculatorappState extends State<calculatorapp> {
                   color: Colors.red,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [Text("Input")],
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: const [
+                      Text(
+                        "Input",
+                        style: TextStyle(fontSize: 48, color: Colors.white),
+                      )
+                    ],
                   ))),
           Row(
             children: [
