@@ -1,5 +1,6 @@
 import 'package:calculator/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -21,6 +22,8 @@ class _calculatorappState extends State<calculatorapp> {
   var input = "";
   var output = "";
   var operation = "";
+  var hideinput = false;
+  var outputsize = 20.0;
 
   onButtonClick(value) {
     //if value is "AC"
@@ -29,8 +32,31 @@ class _calculatorappState extends State<calculatorapp> {
       input = "";
       output = "";
     } else if (value == "<-") {
-      input = input.substring(0, input.length - 1);
+      if (input.isNotEmpty) {
+        input = input.substring(0, input.length - 1);
+      }
+    } else if (value == "=") {
+      if (input.isNotEmpty) {
+        var userinput = input;
+        userinput = input.replaceAll("x", "*");
+        Parser p = Parser();
+        Expression expression = p.parse(userinput);
+        ContextModel cm = ContextModel();
+        var finalvalue = expression.evaluate(EvaluationType.REAL, cm);
+        output = finalvalue.toString();
+        if (output.endsWith(".0")) {
+          output = output.substring(0, output.length - 2);
+        }
+        input = output;
+        hideinput = true;
+        outputsize = 35.0;
+      }
+    } else {
+      input = input + value;
+      hideinput = false;
+      outputsize = 20.0;
     }
+    setState(() {});
   }
 
   @override
@@ -48,14 +74,15 @@ class _calculatorappState extends State<calculatorapp> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        input,
+                        hideinput ? '' : input,
                         style: TextStyle(fontSize: 35, color: Colors.white),
                       ),
                       SizedBox(height: 20),
                       Text(
                         output,
                         style: TextStyle(
-                            fontSize: 25, color: Colors.white.withOpacity(0.7)),
+                            fontSize: outputsize,
+                            color: Colors.white.withOpacity(0.7)),
                       ),
                       SizedBox(height: 20),
                     ],
