@@ -15,6 +15,24 @@ class calculatorapp extends StatefulWidget {
 }
 
 class _calculatorappState extends State<calculatorapp> {
+  //variables
+  double firstNum = 0.0;
+  double secondNum = 0.0;
+  var input = "";
+  var output = "";
+  var operation = "";
+
+  onButtonClick(value) {
+    //if value is "AC"
+
+    if (value == "AC") {
+      input = "";
+      output = "";
+    } else if (value == "<-") {
+      input = input.substring(0, input.length - 1);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,16 +41,23 @@ class _calculatorappState extends State<calculatorapp> {
         children: [
           Expanded(
               child: Container(
+                  width: double.infinity,
                   padding: const EdgeInsets.all(12),
-                  color: Colors.red,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
+                    children: [
                       Text(
-                        "Input",
-                        style: TextStyle(fontSize: 48, color: Colors.white),
-                      )
+                        input,
+                        style: TextStyle(fontSize: 35, color: Colors.white),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        output,
+                        style: TextStyle(
+                            fontSize: 25, color: Colors.white.withOpacity(0.7)),
+                      ),
+                      SizedBox(height: 20),
                     ],
                   ))),
           Row(
@@ -99,9 +124,9 @@ class _calculatorappState extends State<calculatorapp> {
           style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)),
-              padding: EdgeInsets.all(22),
+              padding: const EdgeInsets.all(22),
               primary: buttonbgcolor),
-          onPressed: () {},
+          onPressed: () => onButtonClick(text),
           child: Text(
             text,
             style: TextStyle(
