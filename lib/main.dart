@@ -66,6 +66,9 @@ class _calculatorappState extends State<calculatorapp> {
         children: [
           Expanded(
               child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Colors.blue, Colors.blueGrey])),
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   child: Column(
