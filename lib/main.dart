@@ -62,7 +62,6 @@ class _calculatorappState extends State<calculatorapp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 220, 157, 254),
       body: Column(
         children: [
           Expanded(
