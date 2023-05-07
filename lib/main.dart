@@ -62,7 +62,7 @@ class _calculatorappState extends State<calculatorapp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 220, 157, 254),
       body: Column(
         children: [
           Expanded(
@@ -91,8 +91,8 @@ class _calculatorappState extends State<calculatorapp> {
             children: [
               button(
                   text: "AC",
-                  buttonbgcolor: operatorColor,
-                  tColor: orangeColor),
+                  buttonbgcolor: Colors.green,
+                  tColor: Colors.black),
               button(
                   text: "<-",
                   buttonbgcolor: operatorColor,
