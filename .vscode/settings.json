@@ -1,4 +1,5 @@
 {
     "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "C:/Users/User/Desktop/flutter projects/calculator/linux",
 
 }
